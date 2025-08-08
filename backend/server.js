@@ -13,21 +13,12 @@ connectDB();
 
 const app = express();
 
-// Middleware - Fix CORS configuration
-const corsOptions = {
-  origin: process.env.FRONTEND_URL,
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-};
-app.use(cors(corsOptions)); // Only use this once
-
+// Middleware
+app.use(cors({ origin: 'https://hackathon-mern-frontend.vercel.app', credentials: true }));
+app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
-
-// Handle OPTIONS requests (preflight)
-app.options('*', cors(corsOptions));
 
 // Routes
 app.use('/api/auth', authRoutes);
