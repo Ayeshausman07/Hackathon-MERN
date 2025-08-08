@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@tailwind utilities;
+
+/* Custom styles */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Animation for rating stars */
+.rating-star {
+  transition: color 0.2s;
+}
